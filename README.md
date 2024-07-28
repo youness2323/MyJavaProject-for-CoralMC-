@@ -19,7 +19,10 @@ Esempi di comandi disponibili:
 - `/tpa [giocatore]`: Invia una richiesta di teletrasporto a un altro giocatore.
 - `/tpaccept`: Accetta una richiesta di teletrasporto.
 - `/sethome`: Imposta un punto di casa.
-
+- `/home`: Consente hai giocatori di teletrasportarsi nella Home settata.
+- `/tp [giocatore]`: Consente di tipparsi dai player.
+- `/homelist`: Consente di vedere le proprie Home settate in precedenza.
+- `/delhome <home_name>`: Consente di eliminare una Home settata in precedenza.
 ## Contributi
 
 Sono benvenuti i contributi. Per favore apri un issue o una pull request.
