@@ -1,34 +1,33 @@
-package com.example.minecraftsimulator;
+package com.example.ultimateminecraftplugin;
 
-import com.example.minecraftsimulator.commands.*;
-import com.example.minecraftsimulator.models.Player;
-import java.util.Scanner;
+import org.bukkit.plugin.java.JavaPlugin;
+import com.example.ultimateminecraftplugin.commands.*;
+import com.example.ultimateminecraftplugin.listeners.PlayerJoinListener;
 
-public class Main {
+public class Main extends JavaPlugin {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        PlayerManager playerManager = new PlayerManager();
+    @Override
+    public void onEnable() {
+        getLogger().info("UltimateMinecraftPlugin abilitato!");
 
-        System.out.println("Benvenuto nel Minecraft Simulator!");
+        // Registrazione dei comandi
+        getCommand("tpa").setExecutor(new TeleportCommand(this));
+        getCommand("tpaccept").setExecutor(new TeleportCommand(this));
+        getCommand("tp").setExecutor(new TeleportCommand(this));
+        getCommand("balance").setExecutor(new EconomyCommand(this));
+        getCommand("pay").setExecutor(new EconomyCommand(this));
+        getCommand("claim").setExecutor(new ProtectionCommand(this));
+        getCommand("unclaim").setExecutor(new ProtectionCommand(this));
+        getCommand("minigame").setExecutor(new MinigameCommand(this));
+        getCommand("leaderboard").setExecutor(new LeaderboardCommand(this));
+        getCommand("customizeworld").setExecutor(new WorldCustomizationCommand(this));
 
-        while (true) {
-            System.out.println("Inserisci un comando:");
-            String command = scanner.nextLine();
+        // Registrazione degli eventi
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+    }
 
-            if (command.equalsIgnoreCase("exit")) {
-                System.out.println("Chiusura del simulatore...");
-                break;
-            }
-
-            CommandExecutor executor = CommandFactory.getExecutor(command, playerManager);
-            if (executor != null) {
-                executor.execute(command);
-            } else {
-                System.out.println("Comando non riconosciuto.");
-            }
-        }
-
-        scanner.close();
+    @Override
+    public void onDisable() {
+        getLogger().info("UltimateMinecraftPlugin disabilitato!");
     }
 }
