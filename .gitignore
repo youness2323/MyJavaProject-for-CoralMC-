@@ -1,0 +1,14 @@
+# Eclipse specific files
+.classpath
+.project
+.settings/
+
+# Java specific files
+*.class
+target/
+bin/
+
+# Maven specific files
+*.log
+*.tmp
+
