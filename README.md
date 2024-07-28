@@ -6,7 +6,8 @@ Questo è un progetto Java che implementa varie funzionalità per un plugin di M
 
 - Teletrasporto: Consente ai giocatori di teletrasportarsi in diverse posizioni.
 - Gestione dei giocatori: Gestisce le informazioni e le azioni dei giocatori.
-
+- Creazione di zone Claim e home.
+- Questo plugin dispone anche di Economy ovvero delle monete virtuali con qui si possono acquistare oggetti.
 ## Installazione
 
 1. Clona il repository: `git clone https://github.com/youness2323/MyJavaProject.git`
