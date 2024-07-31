@@ -1,34 +1,35 @@
-package com.example.minecraftsimulator;
+package com.myplugin;
 
-import com.example.minecraftsimulator.commands.*;
-import com.example.minecraftsimulator.models.Player;
-import java.util.Scanner;
+import com.myplugin.commands.*;
+import com.myplugin.listeners.*;
+import com.myplugin.utils.ConfigManager;
+import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main {
+public class Main extends JavaPlugin {
+    @Override
+    public void onEnable() {
+        // Save default config if it doesn't exist
+        saveDefaultConfig();
+        
+        // Initialize config manager
+        ConfigManager.init(this);
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        PlayerManager playerManager = new PlayerManager();
+        // Register commands
+        getCommand("heal").setExecutor(new HealCommand());
+        getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("teleport").setExecutor(new TeleportCommand());
+        getCommand("broadcast").setExecutor(new BroadcastCommand());
+        
+        // Register event listeners
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
 
-        System.out.println("Benvenuto nel Minecraft Simulator!");
+        getLogger().info("Plugin enabled!");
+    }
 
-        while (true) {
-            System.out.println("Inserisci un comando:");
-            String command = scanner.nextLine();
-
-            if (command.equalsIgnoreCase("exit")) {
-                System.out.println("Chiusura del simulatore...");
-                break;
-            }
-
-            CommandExecutor executor = CommandFactory.getExecutor(command, playerManager);
-            if (executor != null) {
-                executor.execute(command);
-            } else {
-                System.out.println("Comando non riconosciuto.");
-            }
-        }
-
-        scanner.close();
+    @Override
+    public void onDisable() {
+        getLogger().info("Plugin disabled!");
     }
 }
