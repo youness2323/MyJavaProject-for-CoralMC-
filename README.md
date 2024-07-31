@@ -1,33 +1,34 @@
-# MinecraftSimulator
+# Minecraft Simulator Plugin
 
-Questo è un progetto Java che implementa varie funzionalità per un plugin di Minecraft.
+Questo è un plugin per Minecraft sviluppato in Java utilizzando Bukkit/Spigot. Questo plugin offre una serie di comandi e ascoltatori per migliorare l'esperienza di gioco.
 
 ## Funzionalità
 
-- Teletrasporto: Consente ai giocatori di teletrasportarsi in diverse posizioni.
-- Gestione dei giocatori: Gestisce le informazioni e le azioni dei giocatori.
-- Creazione di zone Claim e home.
-- Questo plugin dispone anche di Economy ovvero delle monete virtuali con qui si possono acquistare oggetti.
+- **Comandi:**
+  - `/heal`: Ripristina la salute del giocatore.
+  - `/fly`: Attiva o disattiva la modalità volo per il giocatore.
+  - `/teleport <x> <y> <z>`: Teletrasporta il giocatore alle coordinate specificate.
+  - `/broadcast <message>`: Invia un messaggio di broadcast a tutti i giocatori.
+
+- **Ascoltatori di Eventi:**
+  - **PlayerJoinListener**: Invia un messaggio di benvenuto quando un giocatore si unisce al server.
+  - **PlayerQuitListener**: Invia un messaggio quando un giocatore lascia il server.
+  - **PlayerDeathListener**: Mostra un messaggio quando un giocatore muore.
+
+## Configurazione
+
+Modifica il file `config.yml` nella cartella `resources` per personalizzare i messaggi di join e quit.
+
 ## Installazione
 
-1. Clona il repository: `git clone https://github.com/youness2323/MyJavaProject.git`
-2. Importa il progetto in Eclipse o un altro IDE Java.
-3. Compila ed esegui il progetto.
+1. Copia il file JAR del plugin nella cartella `plugins` del tuo server Minecraft.
+2. Riavvia il server.
 
-## Utilizzo
-
-Esempi di comandi disponibili:
-- `/tpa [giocatore]`: Invia una richiesta di teletrasporto a un altro giocatore.
-- `/tpaccept`: Accetta una richiesta di teletrasporto.
-- `/sethome`: Imposta un punto di casa.
-- `/home`: Consente hai giocatori di teletrasportarsi nella Home settata.
-- `/tp [giocatore]`: Consente di tipparsi dai player.
-- `/homelist`: Consente di vedere le proprie Home settate in precedenza.
-- `/delhome <home_name>`: Consente di eliminare una Home settata in precedenza.
 ## Contributi
 
-Sono benvenuti i contributi. Per favore apri un issue o una pull request.
+Se vuoi contribuire a questo progetto, sentiti libero di aprire un issue o fare una pull request.
 
 ## Licenza
 
-Questo progetto è sotto la licenza MIT. Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
+Questo progetto è licenziato sotto la Licenza MIT. Vedi il file `LICENSE` per i dettagli.
+
